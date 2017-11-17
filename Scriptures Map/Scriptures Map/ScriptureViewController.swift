@@ -15,6 +15,8 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
     var book: Book!
     var chapter = 0
+    
+    private weak var mapViewController: MapViewController?
     private var webView: WKWebView!
     
     // MARK: - View controller lifecycle
@@ -29,11 +31,45 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         view = webView
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        configureDetailViewController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureDetailViewController()
         
         let (html, _) = ScriptureRenderer.sharedRenderer.htmlForBookId(book.id, chapter: chapter)
         
         webView.loadHTMLString(html, baseURL: nil)
+    }
+    
+    // MARK: - Web kit navigation delegate
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let path = navigationAction.request.url?.absoluteString {
+            print("Request: \(path), mapViewController: \(mapViewController)")
+            // NEEDSWORK: zoom in on the tapped geoplace
+            decisionHandler(.cancel)
+        }
+        
+        decisionHandler(.allow)
+    }
+    
+    // MARK: - Helpers
+    
+    func configureDetailViewController() {
+        if let splitVC = splitViewController {
+            if let navVC = splitVC.viewControllers.last as? UINavigationController {
+                mapViewController = navVC.topViewController as? MapViewController
+            } else {
+                mapViewController = splitVC.viewControllers.last as? MapViewController
+            }
+        } else {
+            mapViewController = nil
+        }
     }
 }
