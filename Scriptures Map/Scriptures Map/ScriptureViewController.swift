@@ -11,4 +11,21 @@ import WebKit
 
 class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
+    private var webView: WKWebView!
+    
+    override func loadView() {
+        let webViewConfiguration = WKWebViewConfiguration()
+        
+        webViewConfiguration.preferences.javaScriptEnabled = false
+        
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
+        webView.navigationDelegate = self
+        view = webView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
 }
