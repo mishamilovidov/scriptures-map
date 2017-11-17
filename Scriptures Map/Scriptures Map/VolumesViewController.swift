@@ -13,10 +13,23 @@ class VolumesViewController : UITableViewController {
     // MARK: - Constants
     
     public struct Storyboard {
+        static let VolumeSegueIdentifier = "Show Books"
         static let VolumeCellIdentifier = "VolumeCell"
     }
     
     var volumes = GeoDatabase.sharedGeoDatabase.volumes()
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Storyboard.VolumeSegueIdentifier {
+            if let destVC = segue.destination as? BooksViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destVC.books = GeoDatabase.sharedGeoDatabase.booksForParentId(indexPath.row + 1)
+                    destVC.title = volumes[indexPath.row]
+                }
+            }
+        }
+    }
     
     // MARK: - Data source
     

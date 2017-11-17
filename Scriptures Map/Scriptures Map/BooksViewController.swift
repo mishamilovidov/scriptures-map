@@ -16,14 +16,14 @@ class BooksViewController : UITableViewController {
         static let BookCellIdentifier = "BookCell"
     }
     
-    var books: [String]!
+    var books: [Book]!
     
     // MARK: - Data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.BookCellIdentifier, for: indexPath)
         
-        // NEEDS WORK
+        cell.textLabel?.text = books[indexPath.row].fullName
         
         return cell
     }

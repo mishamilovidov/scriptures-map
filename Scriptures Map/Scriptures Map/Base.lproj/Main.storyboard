@@ -120,7 +120,7 @@
         <!--Volume-->
         <scene sceneID="QHx-kS-ewc">
             <objects>
-                <tableViewController id="vlB-jE-vpW" sceneMemberID="viewController">
+                <tableViewController id="vlB-jE-vpW" customClass="BooksViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="L8Y-SB-5HO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
