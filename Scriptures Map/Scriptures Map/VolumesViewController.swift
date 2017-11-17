@@ -17,8 +17,11 @@ class VolumesViewController : UITableViewController {
         static let VolumeCellIdentifier = "VolumeCell"
     }
     
+    // MARK: - Properties
+    
     var volumes = GeoDatabase.sharedGeoDatabase.volumes()
     
+    // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Storyboard.VolumeSegueIdentifier {
