@@ -20,10 +20,11 @@
 		C6B3A9921FBF55CD006985F3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A98A1FBF55CD006985F3 /* String+Extensions.swift */; };
 		C6B3A99D1FBF57A2006985F3 /* geocode.js in Resources */ = {isa = PBXBuildFile; fileRef = C6B3A99C1FBF57A2006985F3 /* geocode.js */; };
 		C6C91CA81FBE3A0E00197386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */; };
-		C6C91CAC1FBE3A0E00197386 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */; };
+		C6C91CAC1FBE3A0E00197386 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CAB1FBE3A0E00197386 /* MapViewController.swift */; };
 		C6C91CAF1FBE3A0E00197386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CAD1FBE3A0E00197386 /* Main.storyboard */; };
 		C6C91CB11FBE3A0E00197386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CB01FBE3A0E00197386 /* Assets.xcassets */; };
 		C6C91CB41FBE3A0E00197386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CB21FBE3A0E00197386 /* LaunchScreen.storyboard */; };
+		C6DC7D521FBF630700E28277 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DC7D511FBF62F200E28277 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +41,12 @@
 		C6B3A99C1FBF57A2006985F3 /* geocode.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = geocode.js; sourceTree = "<group>"; };
 		C6C91CA41FBE3A0E00197386 /* Scriptures Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scriptures Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C6C91CAB1FBE3A0E00197386 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C6C91CAE1FBE3A0E00197386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C6C91CB01FBE3A0E00197386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6C91CB31FBE3A0E00197386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C91CB51FBE3A0E00197386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6DC7D511FBF62F200E28277 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CB245D34249351BB424FEFBD /* Pods_Scriptures_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scriptures_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEF73FDB01738BA87BC690BB /* Pods-Scriptures Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scriptures Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scriptures Map/Pods-Scriptures Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E12E8247AE36C526DE6AF67C /* Pods-Scriptures Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scriptures Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scriptures Map/Pods-Scriptures Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6DC7D521FBF630700E28277 /* MapKit.framework in Frameworks */,
 				BBC27BCF8071AAEEF74CD29C /* Pods_Scriptures_Map.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */,
-				C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */,
+				C6C91CAB1FBE3A0E00197386 /* MapViewController.swift */,
 				C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */,
 				C6623F4F1FBF5CE400C8D667 /* VolumesViewController.swift */,
 			);
@@ -173,6 +176,7 @@
 		FB23A373B8EFF96B0220101A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6DC7D511FBF62F200E28277 /* MapKit.framework */,
 				CB245D34249351BB424FEFBD /* Pods_Scriptures_Map.framework */,
 			);
 			name = Frameworks;
@@ -316,7 +320,7 @@
 				C6B3A9901FBF55CD006985F3 /* Scripture.swift in Sources */,
 				C6B3A9921FBF55CD006985F3 /* String+Extensions.swift in Sources */,
 				C6B3A98E1FBF55CD006985F3 /* ScriptureRenderer.swift in Sources */,
-				C6C91CAC1FBE3A0E00197386 /* DetailViewController.swift in Sources */,
+				C6C91CAC1FBE3A0E00197386 /* MapViewController.swift in Sources */,
 				C6C91CA81FBE3A0E00197386 /* AppDelegate.swift in Sources */,
 				C6623F501FBF5CE400C8D667 /* VolumesViewController.swift in Sources */,
 				C6623F4E1FBF5CCC00C8D667 /* BooksViewController.swift in Sources */,
