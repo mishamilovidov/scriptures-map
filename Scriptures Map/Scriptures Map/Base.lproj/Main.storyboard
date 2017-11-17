@@ -138,10 +138,45 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Volume" id="YMf-2q-JkD"/>
+                    <connections>
+                        <segue destination="VIC-w4-wbR" kind="show" identifier="Show Scripture" id="eir-Vl-hYb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5W-YR-vaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="-630"/>
+        </scene>
+        <!--Chapter-->
+        <scene sceneID="enn-Zh-q36">
+            <objects>
+                <viewController id="VIC-w4-wbR" customClass="ScriptureViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E2A-B4-gU5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-5H-iAz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aTa-5H-iAz" firstAttribute="bottom" secondItem="vCs-8I-nbs" secondAttribute="bottom" id="9Js-go-903"/>
+                            <constraint firstItem="aTa-5H-iAz" firstAttribute="trailing" secondItem="vCs-8I-nbs" secondAttribute="trailing" id="GGb-Bo-flf"/>
+                            <constraint firstItem="aTa-5H-iAz" firstAttribute="top" secondItem="E2A-B4-gU5" secondAttribute="top" id="VbM-cW-261"/>
+                            <constraint firstItem="aTa-5H-iAz" firstAttribute="leading" secondItem="vCs-8I-nbs" secondAttribute="leading" id="ab1-SS-i2w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vCs-8I-nbs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chapter" id="2KX-Zg-EYM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKR-YN-iLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349.5999999999999" y="-630.13493253373315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
