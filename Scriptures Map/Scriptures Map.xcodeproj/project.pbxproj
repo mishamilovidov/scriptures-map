@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BBC27BCF8071AAEEF74CD29C /* Pods_Scriptures_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB245D34249351BB424FEFBD /* Pods_Scriptures_Map.framework */; };
+		C6623F4E1FBF5CCC00C8D667 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */; };
+		C6623F501FBF5CE400C8D667 /* VolumesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623F4F1FBF5CE400C8D667 /* VolumesViewController.swift */; };
 		C6B3A98B1FBF55CD006985F3 /* GeoDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A9831FBF55CC006985F3 /* GeoDatabase.swift */; };
 		C6B3A98C1FBF55CD006985F3 /* GeoPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A9841FBF55CC006985F3 /* GeoPlace.swift */; };
 		C6B3A98D1FBF55CD006985F3 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A9851FBF55CC006985F3 /* Book.swift */; };
@@ -18,7 +20,6 @@
 		C6B3A9921FBF55CD006985F3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A98A1FBF55CD006985F3 /* String+Extensions.swift */; };
 		C6B3A99D1FBF57A2006985F3 /* geocode.js in Resources */ = {isa = PBXBuildFile; fileRef = C6B3A99C1FBF57A2006985F3 /* geocode.js */; };
 		C6C91CA81FBE3A0E00197386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */; };
-		C6C91CAA1FBE3A0E00197386 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CA91FBE3A0E00197386 /* MasterViewController.swift */; };
 		C6C91CAC1FBE3A0E00197386 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */; };
 		C6C91CAF1FBE3A0E00197386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CAD1FBE3A0E00197386 /* Main.storyboard */; };
 		C6C91CB11FBE3A0E00197386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CB01FBE3A0E00197386 /* Assets.xcassets */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		C6623F4F1FBF5CE400C8D667 /* VolumesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumesViewController.swift; sourceTree = "<group>"; };
 		C6B3A9831FBF55CC006985F3 /* GeoDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoDatabase.swift; sourceTree = "<group>"; };
 		C6B3A9841FBF55CC006985F3 /* GeoPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPlace.swift; sourceTree = "<group>"; };
 		C6B3A9851FBF55CC006985F3 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -37,7 +40,6 @@
 		C6B3A99C1FBF57A2006985F3 /* geocode.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = geocode.js; sourceTree = "<group>"; };
 		C6C91CA41FBE3A0E00197386 /* Scriptures Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scriptures Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C6C91CA91FBE3A0E00197386 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C6C91CAE1FBE3A0E00197386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C6C91CB01FBE3A0E00197386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,8 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */,
-				C6C91CA91FBE3A0E00197386 /* MasterViewController.swift */,
 				C6C91CAB1FBE3A0E00197386 /* DetailViewController.swift */,
+				C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */,
+				C6623F4F1FBF5CE400C8D667 /* VolumesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -314,8 +317,9 @@
 				C6B3A9921FBF55CD006985F3 /* String+Extensions.swift in Sources */,
 				C6B3A98E1FBF55CD006985F3 /* ScriptureRenderer.swift in Sources */,
 				C6C91CAC1FBE3A0E00197386 /* DetailViewController.swift in Sources */,
-				C6C91CAA1FBE3A0E00197386 /* MasterViewController.swift in Sources */,
 				C6C91CA81FBE3A0E00197386 /* AppDelegate.swift in Sources */,
+				C6623F501FBF5CE400C8D667 /* VolumesViewController.swift in Sources */,
+				C6623F4E1FBF5CCC00C8D667 /* BooksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
