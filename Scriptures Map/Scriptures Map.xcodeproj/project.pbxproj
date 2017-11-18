@@ -26,6 +26,7 @@
 		C6C91CB41FBE3A0E00197386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C91CB21FBE3A0E00197386 /* LaunchScreen.storyboard */; };
 		C6DC7D521FBF630700E28277 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DC7D511FBF62F200E28277 /* MapKit.framework */; };
 		C6DC7D541FBF667800E28277 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC7D531FBF667800E28277 /* ScriptureViewController.swift */; };
+		C6DC7D561FBFBC3C00E28277 /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC7D551FBFBC3C00E28277 /* ChaptersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		C6C91CB51FBE3A0E00197386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6DC7D511FBF62F200E28277 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C6DC7D531FBF667800E28277 /* ScriptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
+		C6DC7D551FBFBC3C00E28277 /* ChaptersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewController.swift; sourceTree = "<group>"; };
 		CB245D34249351BB424FEFBD /* Pods_Scriptures_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scriptures_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEF73FDB01738BA87BC690BB /* Pods-Scriptures Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scriptures Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scriptures Map/Pods-Scriptures Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E12E8247AE36C526DE6AF67C /* Pods-Scriptures Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scriptures Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scriptures Map/Pods-Scriptures Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,10 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				C6C91CA71FBE3A0E00197386 /* AppDelegate.swift */,
-				C6C91CAB1FBE3A0E00197386 /* MapViewController.swift */,
-				C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */,
 				C6623F4F1FBF5CE400C8D667 /* VolumesViewController.swift */,
+				C6623F4D1FBF5CCC00C8D667 /* BooksViewController.swift */,
+				C6DC7D551FBFBC3C00E28277 /* ChaptersViewController.swift */,
 				C6DC7D531FBF667800E28277 /* ScriptureViewController.swift */,
+				C6C91CAB1FBE3A0E00197386 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				C6B3A98E1FBF55CD006985F3 /* ScriptureRenderer.swift in Sources */,
 				C6C91CAC1FBE3A0E00197386 /* MapViewController.swift in Sources */,
 				C6C91CA81FBE3A0E00197386 /* AppDelegate.swift in Sources */,
+				C6DC7D561FBFBC3C00E28277 /* ChaptersViewController.swift in Sources */,
 				C6623F501FBF5CE400C8D667 /* VolumesViewController.swift in Sources */,
 				C6DC7D541FBF667800E28277 /* ScriptureViewController.swift in Sources */,
 				C6623F4E1FBF5CCC00C8D667 /* BooksViewController.swift in Sources */,
