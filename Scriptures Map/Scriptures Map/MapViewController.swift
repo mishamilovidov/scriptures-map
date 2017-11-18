@@ -41,6 +41,13 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         mapView.setCamera(camera, animated: true)
     }
     
+    // MARK: - Actions
+    
+    @IBAction func setMapRegion(_ sender: Any) {
+        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(40.2, -111.65), MKCoordinateSpanMake(1, 1))
+        mapView.setRegion(region, animated: true)
+    }
+    
     // MARK: - Map view delegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
