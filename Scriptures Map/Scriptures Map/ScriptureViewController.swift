@@ -47,13 +47,31 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         webView.loadHTMLString(html, baseURL: nil)
     }
     
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Map" {
+            let navVC = segue.destination as? UINavigationController
+            
+            if let mapVC = navVC?.topViewController as? MapViewController {
+                // NEEDSWORK: configure the map view controller appropriately
+            }
+        }
+    }
+    
     // MARK: - Web kit navigation delegate
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let path = navigationAction.request.url?.absoluteString {
             if path.hasPrefix(ScriptureRenderer.Constant.baseUrl) {
                 print("Request: \(path), mapViewController: \(String(describing: mapViewController))")
-                // NEEDSWORK: zoom in on the tapped geoplace
+                
+                if let mapVC = mapViewController {
+                        // NEEDSWORK: zoom in on the tapped geoplace
+                } else {
+                    performSegue(withIdentifier: "Show Map", sender: self)
+                }
+                
                 decisionHandler(.cancel)
                 
                 return
