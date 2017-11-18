@@ -49,4 +49,10 @@ class ChaptersViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return book.numChapters!
     }
+    
+    // MARK: - Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Storyboard.ScriptureSegueIdentifier, sender: self)
+    }
 }

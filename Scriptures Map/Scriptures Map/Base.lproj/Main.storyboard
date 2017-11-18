@@ -180,6 +180,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chapter" id="kTi-qQ-R1m"/>
+                    <connections>
+                        <segue destination="VIC-w4-wbR" kind="show" identifier="Show Scripture" id="8lQ-IE-4dN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpR-dj-nuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,7 +191,7 @@
         <!--Scripture-->
         <scene sceneID="enn-Zh-q36">
             <objects>
-                <viewController id="VIC-w4-wbR" customClass="ScriptureViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Scripture" id="VIC-w4-wbR" customClass="ScriptureViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E2A-B4-gU5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,5 +242,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Vqv-eb-gvD"/>
+        <segue reference="8lQ-IE-4dN"/>
     </inferredMetricsTieBreakers>
 </document>

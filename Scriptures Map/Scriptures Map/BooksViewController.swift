@@ -37,10 +37,6 @@ class BooksViewController : UITableViewController {
             if let destVC = segue.destination as? ScriptureViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     destVC.book = books[indexPath.row]
-//                    guard case destVC.chapter? = books[indexPath.row].numChapters else {
-//                        destVC.chapter = 1
-//                        return
-//                    }
                     if books[indexPath.row].numChapters != nil {
                         destVC.chapter = books[indexPath.row].numChapters!
                     }
