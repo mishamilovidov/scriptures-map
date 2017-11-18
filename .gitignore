@@ -5,6 +5,9 @@
 ## Mac
 .DS_Store
 
+## Office files
+*.docx
+
 ## Build generated
 build/
 DerivedData/
@@ -69,4 +72,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-

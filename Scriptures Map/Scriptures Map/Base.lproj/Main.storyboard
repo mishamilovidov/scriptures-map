@@ -149,22 +149,23 @@
                     <navigationItem key="navigationItem" title="Volume" id="YMf-2q-JkD"/>
                     <connections>
                         <segue destination="VIC-w4-wbR" kind="show" identifier="Show Scripture" id="eir-Vl-hYb"/>
+                        <segue destination="v7a-dj-SLW" kind="show" identifier="Show Chapter" id="J9g-qL-fKF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5W-YR-vaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="-630"/>
         </scene>
-        <!--Title-->
+        <!--Chapter-->
         <scene sceneID="Vmc-ku-9BQ">
             <objects>
-                <tableViewController id="v7a-dj-SLW" sceneMemberID="viewController">
+                <tableViewController id="v7a-dj-SLW" customClass="ChaptersViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YrO-WY-aNO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Z9A-d2-Xqp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChapterCell" id="Z9A-d2-Xqp">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z9A-d2-Xqp" id="KRS-DP-MeF">
@@ -178,13 +179,13 @@
                             <outlet property="delegate" destination="v7a-dj-SLW" id="OMX-Oy-jZI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="kTi-qQ-R1m"/>
+                    <navigationItem key="navigationItem" title="Chapter" id="kTi-qQ-R1m"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpR-dj-nuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2421" y="-631"/>
+            <point key="canvasLocation" x="2591" y="-630"/>
         </scene>
-        <!--Chapter-->
+        <!--Scripture-->
         <scene sceneID="enn-Zh-q36">
             <objects>
                 <viewController id="VIC-w4-wbR" customClass="ScriptureViewController" customModule="Scriptures_Map" customModuleProvider="target" sceneMemberID="viewController">
@@ -210,7 +211,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCs-8I-nbs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chapter" id="2KX-Zg-EYM"/>
+                    <navigationItem key="navigationItem" title="Scripture" id="2KX-Zg-EYM"/>
                     <connections>
                         <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="Show Map" id="Vqv-eb-gvD"/>
                     </connections>

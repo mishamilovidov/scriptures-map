@@ -14,7 +14,8 @@ class BooksViewController : UITableViewController {
     
     public struct Storyboard {
         static let BookCellIdentifier = "BookCell"
-        static let ChapterSegueIdentifier = "Show Scripture"
+        static let ChapterSegueIdentifier = "Show Chapter"
+        static let ScriptureSegueIdentifier = "Show Scripture"
     }
     
     // MARK: - Properties
@@ -25,11 +26,25 @@ class BooksViewController : UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Storyboard.ChapterSegueIdentifier {
+            if let destVC = segue.destination as? ChaptersViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destVC.book = books[indexPath.row]
+                    destVC.title = "\(books[indexPath.row].fullName)"
+                }
+            }
+        }
+        if segue.identifier == Storyboard.ScriptureSegueIdentifier {
             if let destVC = segue.destination as? ScriptureViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     destVC.book = books[indexPath.row]
-                    destVC.chapter = 2
-                    destVC.title = "\(books[indexPath.row].fullName) 2"
+//                    guard case destVC.chapter? = books[indexPath.row].numChapters else {
+//                        destVC.chapter = 1
+//                        return
+//                    }
+                    if books[indexPath.row].numChapters != nil {
+                        destVC.chapter = books[indexPath.row].numChapters!
+                    }
+                    destVC.title = "\(books[indexPath.row].fullName)"
                 }
             }
         }
@@ -52,6 +67,12 @@ class BooksViewController : UITableViewController {
     // MARK: - Delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Storyboard.ChapterSegueIdentifier, sender: self)
+        
+        if books[indexPath.row].numChapters == 1 || books[indexPath.row].numChapters == nil {
+            performSegue(withIdentifier: Storyboard.ScriptureSegueIdentifier, sender: self)
+        } else {
+            performSegue(withIdentifier: Storyboard.ChapterSegueIdentifier, sender: self)
+        }
+        
     }
 }
