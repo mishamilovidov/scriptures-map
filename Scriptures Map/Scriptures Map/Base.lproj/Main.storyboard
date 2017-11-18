@@ -51,7 +51,13 @@
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Map" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Title" id="e04-Xl-TTz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="JNe-aC-EBc">
+                            <connections>
+                                <action selector="setMapRegion:" destination="JEX-9P-axG" id="N5S-uM-rs6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="eAK-vG-QYN" id="FVd-Au-kLb"/>
                     </connections>
