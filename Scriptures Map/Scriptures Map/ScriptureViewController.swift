@@ -51,9 +51,13 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let path = navigationAction.request.url?.absoluteString {
-            print("Request: \(path), mapViewController: \(mapViewController)")
-            // NEEDSWORK: zoom in on the tapped geoplace
-            decisionHandler(.cancel)
+            if path.hasPrefix(ScriptureRenderer.Constant.baseUrl) {
+                print("Request: \(path), mapViewController: \(String(describing: mapViewController))")
+                // NEEDSWORK: zoom in on the tapped geoplace
+                decisionHandler(.cancel)
+                
+                return
+            }
         }
         
         decisionHandler(.allow)
