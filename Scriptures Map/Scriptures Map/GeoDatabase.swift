@@ -181,7 +181,5 @@ class GeoDatabase {
         } catch {
             return []
         }
-
-        // return ["Old Testament", "New Testament", "Book of Mormon", "Doctrine and Covenants", "Pearl of Great Price"]
     }
 }

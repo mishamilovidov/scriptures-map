@@ -47,6 +47,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         return detailVC
     }
-
 }
 

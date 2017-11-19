@@ -15,8 +15,8 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     
     var geoPlaces = [GeoPlace]()
     var annotations = [MKPointAnnotation]()
-    var requestedPath = ""
-    
+    var requestedGeoPlacePath = ""
+    var bookChapter = ""
     private var locationManager = CLLocationManager()
 
     // MARK: - Outlets
@@ -45,12 +45,15 @@ class MapViewController : UIViewController, MKMapViewDelegate {
             loadAnnotations(from: geoPlaces)
         }
         
-        if requestedPath != "" {
-            let requestArray = requestedPath.components(separatedBy: "/")
-            if let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(requestArray.last!)!) {
-                loadAnnotation(for: geoPlace)
+        if !requestedGeoPlacePath.isEmpty && requestedGeoPlacePath != "about:blank" {
+            let requestArray = requestedGeoPlacePath.components(separatedBy: "/")
+            if let geoPlaceId = requestArray.last {
+                if let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(geoPlaceId)!) {
+                    loadAnnotation(for: geoPlace)
+                }
             }
-            requestedPath = ""
+            
+            requestedGeoPlacePath = ""
         }
         
     }
@@ -61,6 +64,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         if geoPlaces.count > 0 {
             loadAnnotations(from: geoPlaces)
             zoomToAnnotationRegion()
+            navigationItem.title = bookChapter
         } else {
             loadInitialData()
         }
@@ -80,13 +84,12 @@ class MapViewController : UIViewController, MKMapViewDelegate {
             let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             pinView.canShowCallout = true
             pinView.animatesDrop = true
-            pinView.pinTintColor = UIColor.purple
 
             view = pinView
         } else {
             view?.annotation = annotation
         }
-
+        
         return view
     }
     
@@ -129,13 +132,16 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     }
     
     func loadInitialData() {
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(0, 0), MKCoordinateSpanMake(180, 180))
+        let initalLatitude = 39.9877296
+        let initialLongitude = -93.977757
+        
+        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(initalLatitude, initialLongitude), MKCoordinateSpanMake(180, 180))
         mapView.setRegion(region, animated: true)
     }
     
     func loadAnnotation(for geoPlace: GeoPlace) {
         
-        if mapView.annotations.count > 1 {
+        if mapView.annotations.count > 0 {
             mapView.removeAnnotations(mapView.annotations)
         }
         
@@ -146,7 +152,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         
         mapView.addAnnotation(annotation)
         
-        zoom(to: annotation)
+        zoom(to: geoPlace)
     }
     
     func loadAnnotations(from geoPlaces: [GeoPlace]) {
@@ -164,22 +170,22 @@ class MapViewController : UIViewController, MKMapViewDelegate {
             }
             
             zoomToAnnotationRegion()
+        } else {
+            loadInitialData()
         }
     }
     
-    func zoom(to annotation:MKPointAnnotation) {
-        let latitude = annotation.coordinate.latitude
-        let longitude = annotation.coordinate.longitude
-        
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude, longitude), MKCoordinateSpanMake(7, 7))
-        mapView.setRegion(region, animated: true)
+    func zoom(to geoPlace:GeoPlace) {        
+        let camera = MKMapCamera(lookingAtCenter: CLLocationCoordinate2DMake(geoPlace.latitude, geoPlace.longitude), fromEyeCoordinate: CLLocationCoordinate2DMake(geoPlace.viewLatitude, geoPlace.viewLongitude), eyeAltitude: geoPlace.viewAltitude)
+        navigationItem.title = geoPlace.placename
+        mapView.setCamera(camera, animated: true)
     }
     
     func zoomToAnnotationRegion() {
         let regionLatitude = calculateRegionLatitude()
         let regionLongitude = calculateRegionLongitude()
         
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(regionLatitude, regionLongitude), MKCoordinateSpanMake(15, 15))
+        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(regionLatitude, regionLongitude), MKCoordinateSpanMake(10, 10))
         mapView.setRegion(region, animated: true)
         
     }
