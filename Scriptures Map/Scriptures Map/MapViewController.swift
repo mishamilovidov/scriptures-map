@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 
 class MapViewController : UIViewController, MKMapViewDelegate {
+    
+    // MARK: - Properties
+    
+    var annotations = [MKPointAnnotation]()
 
     // MARK: - Outlets
     
@@ -29,16 +33,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let annotation = MKPointAnnotation()
-        
-        annotation.coordinate = CLLocationCoordinate2DMake(40.2506, -111.65247)
-        annotation.title = "Tanner Building"
-        annotation.subtitle = "BYU Campus"
-        
-        mapView.addAnnotation(annotation)
-        
-        let camera = MKMapCamera(lookingAtCenter: CLLocationCoordinate2DMake(40.2506, -111.65247), fromEyeCoordinate: CLLocationCoordinate2DMake(40, -111.65247), eyeAltitude: 3000)
-        mapView.setCamera(camera, animated: true)
+        loadInitialData()
     }
     
     // MARK: - Actions
@@ -66,6 +61,40 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         }
         
         return view
+    }
+    
+    // MARK: - Helpers
+    
+    func loadInitialData() {
+        
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = CLLocationCoordinate2DMake(40.2506, -111.65247)
+        annotation.title = "Tanner Building"
+        annotation.subtitle = "BYU Campus"
+        
+        mapView.addAnnotation(annotation)
+        
+        let camera = MKMapCamera(lookingAtCenter: CLLocationCoordinate2DMake(40.2506, -111.65247), fromEyeCoordinate: CLLocationCoordinate2DMake(40, -111.65247), eyeAltitude: 3000)
+        mapView.setCamera(camera, animated: true)
+        
+//        // 1
+//        guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
+//            else { return }
+//        let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
+//
+//        guard
+//            let data = optionalData,
+//            // 2
+//            let json = try? JSONSerialization.jsonObject(with: data),
+//            // 3
+//            let dictionary = json as? [String: Any],
+//            // 4
+//            let works = dictionary["data"] as? [[Any]]
+//            else { return }
+//        // 5
+//        let validWorks = works.flatMap { Artwork(json: $0) }
+//        artworks.append(contentsOf: validWorks)
     }
     
 }

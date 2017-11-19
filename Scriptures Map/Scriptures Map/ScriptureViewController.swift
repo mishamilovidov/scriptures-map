@@ -15,6 +15,7 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
     var book: Book!
     var chapter = 0
+    var geoPlaces = [GeoPlace]()
     
     private weak var mapViewController: MapViewController?
     private var webView: WKWebView!
@@ -45,6 +46,9 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         let (html, _) = ScriptureRenderer.sharedRenderer.htmlForBookId(book.id, chapter: chapter)
         
         webView.loadHTMLString(html, baseURL: nil)
+        
+        geoPlaces = retrieveGeoPlaces(in: GeoDatabase.sharedGeoDatabase.versesForScriptureBookId(book.id, chapter))
+        
     }
     
     // MARK: - Segues
@@ -93,5 +97,22 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         } else {
             mapViewController = nil
         }
+    }
+    
+    func retrieveGeoPlaces(in verses: [Scripture]) -> [GeoPlace] {
+        
+        var geoPlaces = [GeoPlace]()
+        
+        for scripture in verses {
+            let geoTags = GeoDatabase.sharedGeoDatabase.geoTagsForScriptureId(scripture.id)
+            
+            for geoTag in geoTags {
+                let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(geoTag.1.geoplaceId)
+                
+                geoPlaces.append(geoPlace!)
+            }
+        }
+        
+        return geoPlaces
     }
 }
