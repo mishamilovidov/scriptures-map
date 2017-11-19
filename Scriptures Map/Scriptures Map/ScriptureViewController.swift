@@ -11,12 +11,18 @@ import WebKit
 
 class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
+    // MARK: - Constants
+    
+    private struct Storyboard {
+        static let MapSegueIdentifier = "Show Map"
+    }
+    
     // MARK: - Properties
     
     var book: Book!
     var chapter = 0
     var geoPlaces = [GeoPlace]()
-    var selectedLocationPath = ""
+    var selectedGeoPlacePath = ""
     
     private weak var mapViewController: MapViewController?
     private var webView: WKWebView!
@@ -52,18 +58,19 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         
         mapViewController?.geoPlaces = geoPlaces
         mapViewController?.loadAnnotations(from: geoPlaces)
-        
+        mapViewController?.title = self.title
+        mapViewController?.bookChapter = self.title!
     }
     
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Show Map" {
+        if segue.identifier == Storyboard.MapSegueIdentifier {
             let navVC = segue.destination as? UINavigationController
             
             if let mapVC = navVC?.topViewController as? MapViewController {
                 mapVC.geoPlaces = geoPlaces
-                mapVC.requestedPath = selectedLocationPath
+                mapVC.requestedGeoPlacePath = selectedGeoPlacePath
             }
         }
     }
@@ -72,10 +79,10 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let path = navigationAction.request.url?.absoluteString {
-            selectedLocationPath = path
+            selectedGeoPlacePath = path
             
             if path.hasPrefix(ScriptureRenderer.Constant.baseUrl) {
-                print("Request: \(path), mapViewController: \(String(describing: mapViewController))")
+                // print("Request: \(path), mapViewController: \(String(describing: mapViewController))")
                 
                 if let mapVC = mapViewController {
                     let requestArray = path.components(separatedBy: "/")
@@ -84,7 +91,7 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
                         mapVC.loadAnnotation(for: geoPlace)
                     }
                 } else {
-                    performSegue(withIdentifier: "Show Map", sender: self)
+                    performSegue(withIdentifier: Storyboard.MapSegueIdentifier, sender: self)
                 }
                 
                 decisionHandler(.cancel)

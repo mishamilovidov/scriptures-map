@@ -41,7 +41,11 @@ class ChaptersViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.ChapterCellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = "\(book.fullName) \(indexPath.row + 1)"
+        if book.fullName == "Sections" {
+            cell.textLabel?.text = "Section \(indexPath.row + 1)"
+        } else {
+            cell.textLabel?.text = "\(book.fullName) \(indexPath.row + 1)"
+        }
         
         return cell
     }
