@@ -52,7 +52,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="e04-Xl-TTz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="JNe-aC-EBc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JNe-aC-EBc">
                             <connections>
                                 <action selector="setMapRegion:" destination="JEX-9P-axG" id="N5S-uM-rs6"/>
                             </connections>

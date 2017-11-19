@@ -16,6 +16,7 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     var book: Book!
     var chapter = 0
     var geoPlaces = [GeoPlace]()
+    var selectedLocationPath = ""
     
     private weak var mapViewController: MapViewController?
     private var webView: WKWebView!
@@ -49,6 +50,9 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
         
         geoPlaces = retrieveGeoPlaces(in: GeoDatabase.sharedGeoDatabase.versesForScriptureBookId(book.id, chapter))
         
+        mapViewController?.geoPlaces = geoPlaces
+        mapViewController?.loadAnnotations(from: geoPlaces)
+        
     }
     
     // MARK: - Segues
@@ -58,7 +62,8 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
             let navVC = segue.destination as? UINavigationController
             
             if let mapVC = navVC?.topViewController as? MapViewController {
-                // NEEDSWORK: configure the map view controller appropriately
+                mapVC.geoPlaces = geoPlaces
+                mapVC.requestedPath = selectedLocationPath
             }
         }
     }
@@ -67,11 +72,17 @@ class ScriptureViewController : UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let path = navigationAction.request.url?.absoluteString {
+            selectedLocationPath = path
+            
             if path.hasPrefix(ScriptureRenderer.Constant.baseUrl) {
                 print("Request: \(path), mapViewController: \(String(describing: mapViewController))")
                 
                 if let mapVC = mapViewController {
-                        // NEEDSWORK: zoom in on the tapped geoplace
+                    let requestArray = path.components(separatedBy: "/")
+                    if let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(requestArray.last!)!) {
+                        mapVC.geoPlaces = geoPlaces
+                        mapVC.loadAnnotation(for: geoPlace)
+                    }
                 } else {
                     performSegue(withIdentifier: "Show Map", sender: self)
                 }
