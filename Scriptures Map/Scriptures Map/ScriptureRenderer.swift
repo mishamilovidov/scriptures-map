@@ -105,8 +105,8 @@ class ScriptureRenderer {
     private func geocodedTextForVerseText(_ verseText: String, _ scriptureId: Int) -> String {
         var verseText = verseText
         for (geoplace, geotag) in GeoDatabase.sharedGeoDatabase.geoTagsForScriptureId(scriptureId) {
-            let startIndex = verseText.characters.index(verseText.startIndex, offsetBy: geotag.startOffset)
-            let endIndex = verseText.characters.index(startIndex, offsetBy: geotag.endOffset - geotag.startOffset)
+            let startIndex = verseText.index(verseText.startIndex, offsetBy: geotag.startOffset)
+            let endIndex = verseText.index(startIndex, offsetBy: geotag.endOffset - geotag.startOffset)
 
             collectedGeocodedPlaces.append(geoplace)
 
