@@ -17,7 +17,6 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     var annotations = [MKPointAnnotation]()
     var requestedGeoPlacePath = ""
     var bookChapter = ""
-    
     private var locationManager = CLLocationManager()
 
     // MARK: - Outlets
@@ -46,11 +45,14 @@ class MapViewController : UIViewController, MKMapViewDelegate {
             loadAnnotations(from: geoPlaces)
         }
         
-        if !requestedGeoPlacePath.isEmpty {
+        if !requestedGeoPlacePath.isEmpty && requestedGeoPlacePath != "about:blank" {
             let requestArray = requestedGeoPlacePath.components(separatedBy: "/")
-            if let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(requestArray.last!)!) {
-                loadAnnotation(for: geoPlace)
+            if let geoPlaceId = requestArray.last {
+                if let geoPlace = GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(geoPlaceId)!) {
+                    loadAnnotation(for: geoPlace)
+                }
             }
+            
             requestedGeoPlacePath = ""
         }
         
@@ -173,14 +175,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         }
     }
     
-    func zoom(to geoPlace:GeoPlace) {
-//        let latitude = annotation.coordinate.latitude
-//        let longitude = annotation.coordinate.longitude
-//
-//        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude, longitude), MKCoordinateSpanMake(3, 3))
-//        navigationItem.title = annotation.title
-//        mapView.setRegion(region, animated: true)
-        
+    func zoom(to geoPlace:GeoPlace) {        
         let camera = MKMapCamera(lookingAtCenter: CLLocationCoordinate2DMake(geoPlace.latitude, geoPlace.longitude), fromEyeCoordinate: CLLocationCoordinate2DMake(geoPlace.viewLatitude, geoPlace.viewLongitude), eyeAltitude: geoPlace.viewAltitude)
         navigationItem.title = geoPlace.placename
         mapView.setCamera(camera, animated: true)
